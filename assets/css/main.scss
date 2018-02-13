@@ -1,0 +1,21 @@
+@import "~bulma/sass/utilities/initial-variables";
+
+$beet: #2E112D;
+$regal-red: #540032;
+$fire: #C9283E;
+$violet: #965677;
+$violet-lighter: #AB6288;
+$violet-darker: #78455F;
+
+$box-background-color: $regal-red;
+$box-radius: 0;
+$text: $white;
+$title-color: $white;
+$subtitle-color: $white;
+$title-color: $white;
+$link: $violet;
+$link-visited: $violet-darker;
+$link-hover: $violet-lighter;
+
+@import "~bulma/bulma";
+@import "custom.scss"
