@@ -5,20 +5,27 @@
         </figure>
         <div class="box">
             <span>
-                <font-awesome-icon :icon="tagCircle" transform="shrink-6" class="icon-violet"/><a href="#">Team work</a>
+                <font-awesome-icon :icon="tagCircle" transform="shrink-6" class="icon-violet"/>
+                <a href="#">
+                    {{ content.tag }}
+                </a>
             </span>
 
-            <h1 class="title">One</h1>
-            <h6 class="subtitle is-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed scelerisque dictum semper. Donec ornare ullamcorper velit, sagittis venenatis neque varius mattis. Suspendisse et lectus sed neque tincidunt convallis. Curabitur feugiat diam non tortor hendrerit, id mattis dui laoreet...</h6>
+            <h1 class="title">
+                <a href="#">
+                    {{ content.title }} 
+                </a>
+            </h1>
+            <h6 class="subtitle is-7">{{ content.summary }}</h6>
             <nav class="level">
                 <div class="level-left">
                     <div class="level-item">
                         <font-awesome-icon :icon="iconUser" transform="shrink-3" class="icon-violet"/>
-                            <a href="#">Patrick Zielinski</a>
+                            <a href="#">{{ content.author }}</a>
                     </div>
                     <div class="level-item">
                         <font-awesome-icon :icon="iconClock" transform="shrink-3" class="icon-violet"/>
-                            <a href="#">Today</a>
+                            <a href="#">{{ content.date }}</a>
                     </div>
                 </div>
             </nav>
@@ -33,6 +40,8 @@ import { faClock } from '@fortawesome/fontawesome-free-regular';
 import { faUserCircle } from '@fortawesome/fontawesome-free-solid';
 
 export default {
+    props: ['content'],
+
     components: {
         FontAwesomeIcon,
     },
@@ -52,9 +61,6 @@ export default {
 </script>
 
 <style type="sass" scoped>
-    .box {
-    }
-
     img {
         height: 160px; 
         width: 100%;

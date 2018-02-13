@@ -5,3 +5,11 @@ html, body {
 .box .icon-violet {
     color: $violet;
 }
+
+.title a {
+    color: $white !important; 
+}
+
+.title a:hover {
+    color: $violet-lighter !important; 
+}
