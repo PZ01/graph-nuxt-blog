@@ -1,75 +1,40 @@
 <template>
     <section class="section">
         <div class="container">
-            <div class="tile is-ancestor">
-                <div class="tile is-parent is-6">
-                    <tile-content :content="previews[0]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent">
-                    <tile-content :content="previews[1]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent">
-                    <tile-content :content="previews[2]"></tile-content> 
-                </div>
-            </div>
-
-            <div class="tile is-ancestor">
-                <div class="tile is-parent">
-                    <tile-content :content="previews[3]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent">
-                    <tile-content :content="previews[4]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent">
-                    <tile-content :content="previews[5]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent">
-                    <tile-content :content="previews[6]"></tile-content> 
-                </div>
-            </div>
-
-            <div class="tile is-ancestor">
-                <div class="tile is-parent">
-                    <tile-content :content="previews[7]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent">
-                    <tile-content :content="previews[8]"></tile-content> 
-                </div>
-
-                <div class="tile is-parent is-6">
-                    <tile-content :content="previews[9]"></tile-content> 
-                </div>
-            </div>
+            <tile-set :posts="allPosts.slice(0, 3)"></tile-set>
+            <tile-set :posts="allPosts.slice(3, 7)"></tile-set>
+            <tile-set :posts="allPosts.slice(7)"></tile-set>
         </div>
     </section>
 </template>
 
 <script>
-import TileContent from '~/components/TileContent.vue';
-import axios from 'axios';
+import TileSet from '~/components/TileSet.vue';
+import {ALL_POSTS_QUERY} from '~/assets/js/graphql.js';
+
+const POSTS_PER_PAGE = 10;
 
 export default {
     components: {
-        TileContent
+        TileSet
     },
 
-    asyncData({ req, params }) {
-        return axios.get('http://localhost:3006/previews')
-            .then((res) => {
-                return { previews: res.data.slice(0, 10) }
-            })
+    data: () => ({
+        loading: 0,
+        allPosts: [],
+        setCompleted: false,
+    }),
+
+    apollo: {
+        $loadingKey: 'loading',
+        allPosts: {
+            query: ALL_POSTS_QUERY,
+            variables: {
+                skip: 0,
+                first: POSTS_PER_PAGE
+            }
+        }
     },
 }
 </script>
 
-<style type="sass" scoped>
-    .tile .is-parent {
-        padding: 0.25rem !important; 
-    }
-</style>

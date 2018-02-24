@@ -17,10 +17,13 @@ module.exports = {
      ** Customize the progress bar color
      */
     loading: { color: '#3B8070' },
+
     /*
      ** Build configuration
      */
     build: {
+        vendor: ['velocity-animate'],
+
         /*
          ** Run ESLint on save
          */
@@ -35,10 +38,23 @@ module.exports = {
             }
         }
     },
+
     /*
      ** Include CSS
      */
     css: [
         '~assets/css/main.scss',
     ],
+
+    script: [
+        { src: '~assets/js/graphql.js' }
+    ],
+
+    modules: ['@nuxtjs/apollo'],
+
+    apollo: {
+        clientConfigs: {
+            default: '~/apollo/client-configs/default.js'
+        }
+    }
 }
