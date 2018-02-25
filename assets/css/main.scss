@@ -16,12 +16,16 @@ $tag-radius: 0;
 $box-background-color: $regal-red;
 $box-radius: 0;
 $text: $white;
+$text-strong: $white;
 $title-color: $white;
 $subtitle-color: $white;
 $title-color: $white;
+$content-heading-color: $white;
+
 $link: $violet;
 $link-visited: $violet-darker;
 $link-hover: $violet-lighter;
+
 
 @import "~bulma/bulma";
 @import "custom.scss"

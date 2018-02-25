@@ -1,9 +1,24 @@
 html, body {
     background-color: $beet;
 }
+hr { 
+    height: 12px; 
+    border: 0; 
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5); 
+    margin: 0.5rem 0 !important;
+    background-color: $regal-red !important;
+}
 
-.box .icon-violet {
+.icon-violet {
     color: $violet;
+}
+
+.icon-violet:hover {
+    color: $violet-lighter;
+}
+
+.icon-violet:visited {
+    color: $violet-darker;
 }
 
 .title a {
@@ -12,4 +27,23 @@ html, body {
 
 .title a:hover {
     color: $violet-lighter !important; 
+}
+
+.container-post {
+    width: 720px !important;
+    .content {
+        h1 {
+            background-color: $violet-lighter;
+            display: inline-block;
+        }
+    }
+    .is-rounded {
+        border-radius: 50% !important;
+    }
+    .posted-by, .share-link, .categorized-as {
+        text-transform: uppercase;
+        color: $violet-lighter;
+        font-weight: bold;
+        font-size: 0.70em;
+    }
 }

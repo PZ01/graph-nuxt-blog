@@ -9,11 +9,11 @@
             </span>
 
             <h1 class="title">
-                <a href="#">
-                    {{ content.title }} 
-                </a>
+                <nuxt-link :to="postSlug">{{ content.title }}</nuxt-link>
             </h1>
+            
             <h6 class="subtitle is-7">{{ content.summary }}</h6>
+
             <nav class="level">
                 <div class="level-left">
                     <div class="level-item">
@@ -63,6 +63,10 @@ export default {
     computed: {
         tileId() {
             return 'tile_' + this.content.id;
+        },
+
+        postSlug() {
+            return { name: 'posts-slug', params: { slug: this.content.slug }};
         },
 
         formattedPostDate() {

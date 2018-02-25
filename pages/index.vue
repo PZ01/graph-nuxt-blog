@@ -1,9 +1,9 @@
 <template>
     <section class="section">
         <div class="container">
-            <tile-set :posts="allPosts.slice(0, 3)"></tile-set>
-            <tile-set :posts="allPosts.slice(3, 7)"></tile-set>
-            <tile-set :posts="allPosts.slice(7)"></tile-set>
+            <tile-set :posts="allPosts.slice(0, 1)"></tile-set>
+            <!--tile-set :posts="allPosts.slice(3, 7)"></tile-set-->
+            <!--tile-set :posts="allPosts.slice(7)"></tile-set-->
         </div>
     </section>
 </template>
@@ -22,7 +22,6 @@ export default {
     data: () => ({
         loading: 0,
         allPosts: [],
-        setCompleted: false,
     }),
 
     apollo: {

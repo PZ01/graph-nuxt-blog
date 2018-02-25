@@ -48,6 +48,7 @@ module.exports = {
 
     script: [
         { src: '~assets/js/graphql.js' }
+        { src: '~assets/js/utility.js' }
     ],
 
     modules: ['@nuxtjs/apollo'],
