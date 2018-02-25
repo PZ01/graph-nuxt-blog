@@ -1,60 +1,59 @@
 <template>
-    <div class="container container-post" v-if="post.author">
-        <div class="box">
-            <nav class="level">
-                <!-- Left side -->
-                <div class="level-left">
-                    <div class="level-item">
-                        <img class="image is-48x48 is-rounded" :src="post.author.thumbnail.url" alt="Author's Picture"/>
-                    </div>
-                    <div class="level-item">
-                        <span class="posted-by">Posted By 
-                            <a href="#">
-                                {{post.author.firstName}} {{post.author.lastName}}
-                                <font-awesome-icon :icon="longArrowAltRight" class="icon-violet"/>
-                            </a>
-                        </span> 
-                    </div>
-                </div>
-                <div class="level-right">
-                   <div class="level-item">
-                       <a class="share-link" href="#">
-                           Share
-                           <font-awesome-icon :icon="shareSquare" class="icon-violet"/>
-                       </a> 
-                   </div> 
-                </div>
-            </nav>
-
-            <div class="content">
-                <h1 class="title">{{ post.title }}</h1>
-                <p v-html="post.content"></p>
-                <hr>
-                <span class="categorized-as">Categorized as:</span><br>
-                <span class="tags">
-                    <a class="tag" href="#" v-for="tag in post.tags" :key="tag" v-text="tag"></a>
-                </span>
-            </div>
-        </div>
+<div v-cloak>
+    <div class="loading-icon" v-if="loading">
+        <font-awesome-icon :icon="compass" class="icon-violet" size="10x" spin/>
     </div>
+
+    <transition name="fade">
+        <div v-if="postFetched">
+            <div class="nav-stretch"></div>    
+            <div class="container container-post">
+
+                <post-nav></post-nav>
+
+                <div class="box">
+                    <post-header :post="post"></post-header>
+
+                    <div class="content">
+                        <h1 class="title">{{ post.title }}</h1>
+                        <p v-html="post.content"></p>
+                        <post-footer :post="post"></post-footer>
+                    </div>
+                </div>
+            </div>
+            <subscribe></subscribe>
+        </div>
+    </transition>       
+</div>
+
 </template>
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faLongArrowAltRight } from '@fortawesome/fontawesome-free-solid';
-import { faShareSquare } from '@fortawesome/fontawesome-free-solid';
+import { faCompass } from '@fortawesome/fontawesome-free-regular';
 
 import {GET_POST_QUERY} from '~/assets/js/graphql.js';
+
+import PostNav from '~/components/PostNav.vue';
+import PostHeader from '~/components/PostHeader.vue';
+import PostFooter from '~/components/PostFooter.vue';
+import Subscribe from '~/components/Subscribe.vue';
+
+import { isEmptyObject } from '~/assets/js/utility.js';
 
 export default {
 
     components: {
+        PostNav,
+        PostHeader,
+        PostFooter,
+        Subscribe,
         FontAwesomeIcon,
     },
 
     data: () => ({
         loading: 0,
-        post: [],
+        post: {},
     }),
 
     apollo: {
@@ -69,16 +68,32 @@ export default {
     },
 
     computed: {
-        longArrowAltRight() {
-            return faLongArrowAltRight;
+        postFetched() {
+            return ! isEmptyObject(this.post); 
         },
-        shareSquare() {
-            return faShareSquare;
-        },
-    },
+
+        compass() {
+            return faCompass; 
+        }
+    }
 }
 </script>
 
 <style type="sass" scoped>
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
 
+.fade-enter, .fade-leave-to { 
+    opacity: 0;
+}
+
+.loading-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
 </style>

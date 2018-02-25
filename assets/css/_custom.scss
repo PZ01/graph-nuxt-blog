@@ -1,12 +1,13 @@
 html, body {
     background-color: $beet;
 }
-hr { 
-    height: 12px; 
-    border: 0; 
-    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5); 
-    margin: 0.5rem 0 !important;
-    background-color: $regal-red !important;
+
+[v-cloak] {
+    display: none;
+}
+
+.bg-color-red-wine {
+    background-color: $red-wine;
 }
 
 .icon-violet {
@@ -29,21 +30,49 @@ hr {
     color: $violet-lighter !important; 
 }
 
+.nav-stretch {
+    width: 100%;
+    height: $navbar-height;
+    background-color: $box-background-color;
+    position: absolute;
+    box-shadow: $box-shadow
+}
+
+.footer-subscribe{
+    .content {
+        width: $post-width !important;
+        margin: 0.5em auto;
+    }
+}
+
+.text-emphasis {
+    text-transform: uppercase;
+    color: $violet-lighter;
+    font-weight: bold;
+    font-size: 0.70em;
+}
+
 .container-post {
-    width: 720px !important;
+    width: $post-width !important;
+
+    .navbar {
+        background-color: $box-background-color;
+        padding: 0 1.25rem 0 1.25rem;
+        box-shadow: $box-shadow
+    },
+
     .content {
         h1 {
             background-color: $violet-lighter;
+            font-family: $family-playfair;
             display: inline-block;
+        },
+        p {
+            text-align: justify;
         }
     }
+
     .is-rounded {
         border-radius: 50% !important;
-    }
-    .posted-by, .share-link, .categorized-as {
-        text-transform: uppercase;
-        color: $violet-lighter;
-        font-weight: bold;
-        font-size: 0.70em;
     }
 }

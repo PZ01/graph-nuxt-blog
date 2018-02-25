@@ -31,6 +31,7 @@ query GetPostQuery($slug: String!) {
             }
         }
         title
+        createdAt
         tags
         content    
     }

@@ -22,6 +22,7 @@
     "apollo-link": "^1.0.3",
     "apollo-link-http": "^1.2.0",
     "bulma": "^0.6.2",
+    "email-validator": "^1.1.1",
     "graphql": "^0.13.0",
     "graphql-tag": "^2.7.3",
     "moment": "^2.20.1",

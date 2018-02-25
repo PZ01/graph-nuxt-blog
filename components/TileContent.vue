@@ -31,7 +31,8 @@
 </template>
 
 <script>
-import moment from 'moment';
+import { formatDate } from '~/assets/js/utility.js';
+
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faClock } from '@fortawesome/fontawesome-free-regular';
 import { faUserCircle } from '@fortawesome/fontawesome-free-solid';
@@ -61,16 +62,17 @@ export default {
     },
 
     computed: {
+
         tileId() {
             return 'tile_' + this.content.id;
         },
 
+        formattedPostDate() {
+            return formatDate(this.post.createdAt); 
+        }, 
+
         postSlug() {
             return { name: 'posts-slug', params: { slug: this.content.slug }};
-        },
-
-        formattedPostDate() {
-            return moment(this.content.createdAt).format("MMM Do YYYY");
         },
 
         fullName() {
@@ -80,6 +82,7 @@ export default {
         tagCircle() {
             return faDotCircle;
         },
+
         iconUser() {
             return faUserCircle;
         },

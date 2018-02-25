@@ -22,7 +22,7 @@ module.exports = {
      ** Build configuration
      */
     build: {
-        vendor: ['velocity-animate'],
+        vendor: ['moment', 'velocity-animate'],
 
         /*
          ** Run ESLint on save
@@ -47,7 +47,7 @@ module.exports = {
     ],
 
     script: [
-        { src: '~assets/js/graphql.js' }
+        { src: '~assets/js/graphql.js' },
         { src: '~assets/js/utility.js' }
     ],
 
