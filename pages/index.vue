@@ -34,6 +34,12 @@ export default {
             }
         }
     },
+
+    computed: {
+        postsFetched() {
+            return this.allPosts.length > 0; 
+        } 
+    }
 }
 </script>
 

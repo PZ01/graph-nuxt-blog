@@ -9,7 +9,7 @@
         v-on:after-enter="afterEnter"
         v-on:leave="leave">
         <div v-for="(post, index) in posts" v-bind:data-index="index" v-bind:key="post.id" class="tile is-parent">
-            <tile-content :content="post"></tile-content> 
+            <tile-content :post="post"></tile-content> 
         </div>
     </transition-group>
 </template>

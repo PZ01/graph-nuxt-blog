@@ -1,18 +1,18 @@
 <template>
     <div :id="this.tileId" class="tile is-child">
         <figure>
-            <img :src="content.cover.url">
+            <img :src="post.cover.url">
         </figure>
         <div class="box">
             <span class="tags">
-                <a class="tag" href="#" v-for="tag in content.tags" :key="tag" v-text="tag"></a>
+                <a class="tag" href="#" v-for="tag in post.tags" :key="tag" v-text="tag"></a>
             </span>
 
             <h1 class="title">
-                <nuxt-link :to="postSlug">{{ content.title }}</nuxt-link>
+                <nuxt-link :to="postSlug">{{ post.title }}</nuxt-link>
             </h1>
             
-            <h6 class="subtitle is-7">{{ content.summary }}</h6>
+            <h6 class="subtitle is-7">{{ post.summary }}</h6>
 
             <nav class="level">
                 <div class="level-left">
@@ -38,7 +38,7 @@ import { faClock } from '@fortawesome/fontawesome-free-regular';
 import { faUserCircle } from '@fortawesome/fontawesome-free-solid';
 
 export default {
-    props: ['content'],
+    props: ['post'],
 
     components: {
         FontAwesomeIcon,
@@ -64,7 +64,7 @@ export default {
     computed: {
 
         tileId() {
-            return 'tile_' + this.content.id;
+            return 'tile_' + this.post.id;
         },
 
         formattedPostDate() {
@@ -72,11 +72,11 @@ export default {
         }, 
 
         postSlug() {
-            return { name: 'posts-slug', params: { slug: this.content.slug }};
+            return { name: 'posts-slug', params: { slug: this.post.slug }};
         },
 
         fullName() {
-            return this.content.author.firstName + ' ' + this.content.author.lastName; 
+            return this.post.author.firstName + ' ' + this.post.author.lastName; 
         },
 
         tagCircle() {
