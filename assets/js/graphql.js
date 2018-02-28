@@ -23,9 +23,7 @@ query AllPostsQuery($first: Int!, $skip: Int!) {
 export const GET_POST_AND_EDGES_QUERY = gql`
 query GetPostQuery($strId: String!, $id: ID!) {
     Previous: allPosts (last: 1, before: $strId){
-        title
-        slug
-        id
+        ...PostFragment 
     }
     Post(id: $id) {
         author {
@@ -42,9 +40,13 @@ query GetPostQuery($strId: String!, $id: ID!) {
 
     }
     Next: allPosts(first: 1, after: $strId) {
-        title
-        slug
-        id
+        ...PostFragment 
     }
+}
+
+fragment PostFragment on Post {
+    title
+    slug
+    id
 }
 `;
