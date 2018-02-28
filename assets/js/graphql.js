@@ -20,9 +20,14 @@ query AllPostsQuery($first: Int!, $skip: Int!) {
 }
 `;
 
-export const GET_POST_QUERY = gql`
-query GetPostQuery($slug: String!) {
-    Post(slug:$slug) {
+export const GET_POST_AND_EDGES_QUERY = gql`
+query GetPostQuery($strId: String!, $id: ID!) {
+    Previous: allPosts (last: 1, before: $strId){
+        title
+        slug
+        id
+    }
+    Post(id: $id) {
         author {
             firstName
             lastName
@@ -34,6 +39,12 @@ query GetPostQuery($slug: String!) {
         createdAt
         tags
         content    
+
+    }
+    Next: allPosts(first: 1, after: $strId) {
+        title
+        slug
+        id
     }
 }
 `;

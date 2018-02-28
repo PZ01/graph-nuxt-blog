@@ -9,21 +9,21 @@
             <div class="nav-stretch"></div>    
             <div class="container container-post">
 
-                <post-nav></post-nav>
+                <post-nav :previous="data.previous" :next="data.next"></post-nav>
 
                 <div class="box">
-                    <post-header :post="post"></post-header>
+                    <post-header :post="data.post"></post-header>
 
                     <div class="content">
-                        <h1 class="title">{{ post.title }}</h1>
-                        <p v-html="post.content"></p>
-                        <post-footer :post="post"></post-footer>
+                        <h1 class="title">{{ data.post.title }}</h1>
+                        <p v-html="data.post.content"></p>
+                        <post-footer :post="data.post"></post-footer>
                     </div>
                 </div>
             </div>
             <subscribe></subscribe>
         </div>
-    </transition>       
+    </transition>
 </div>
 
 </template>
@@ -32,7 +32,7 @@
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faCompass } from '@fortawesome/fontawesome-free-regular';
 
-import {GET_POST_QUERY} from '~/assets/js/graphql.js';
+import { GET_POST_AND_EDGES_QUERY } from '~/assets/js/graphql.js';
 
 import PostNav from '~/components/PostNav.vue';
 import PostHeader from '~/components/PostHeader.vue';
@@ -53,23 +53,27 @@ export default {
 
     data: () => ({
         loading: 0,
-        post: {},
+        data: {},
     }),
 
     apollo: {
         $loadingKey: 'loading',
-        post: {
-            query: GET_POST_QUERY,
+        data: {
+            query: GET_POST_AND_EDGES_QUERY,
             variables() {
-                return { slug: this.$route.params.slug }
+                return { strId: this.$route.query.id, id: this.$route.query.id }
             },
-            update: ({ Post }) => Post,
+            update:({Previous, Post, Next}) => ({
+                'previous': Previous[0],
+                'next': Next[0],
+                'post': Post,
+            }),
         },
     },
 
     computed: {
         postFetched() {
-            return ! isEmptyObject(this.post); 
+            return ! isEmptyObject(this.data); 
         },
 
         compass() {

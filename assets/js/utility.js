@@ -8,4 +8,8 @@ function isEmptyObject(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
 }
 
-export { formatDate, isEmptyObject };
+function createToSlug(slug, id) {
+    return { name: 'posts-slug', params: { 'slug': slug }, query: { 'id': id }};
+}
+
+export { formatDate, isEmptyObject, createToSlug };

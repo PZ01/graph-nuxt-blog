@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { formatDate } from '~/assets/js/utility.js';
+import { formatDate, createToSlug } from '~/assets/js/utility.js';
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faClock } from '@fortawesome/fontawesome-free-regular';
@@ -72,7 +72,7 @@ export default {
         }, 
 
         postSlug() {
-            return { name: 'posts-slug', params: { slug: this.post.slug }};
+            return createToSlug(this.post.slug, this.post.id);
         },
 
         fullName() {
