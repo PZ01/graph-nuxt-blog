@@ -22,6 +22,14 @@ html, body {
     color: $violet-darker;
 }
 
+.vue-tooltip.tooltip-custom {
+    background-color: $red-wine;
+}
+
+.vue-tooltip.tooltip-custom .tooltip-arrow {
+    border-color: $red-wine !important;
+}
+
 .title a {
     color: $white !important; 
 }

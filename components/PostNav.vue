@@ -7,10 +7,10 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-end">
-                    <nuxt-link :to="previousLink" class="navbar-item" v-if="previous !== undefined">
+                    <nuxt-link :to="previousLink" class="navbar-item" v-if="previous !== undefined" v-tooltip.left="tooltip(previous)">
                         <font-awesome-icon :icon="chevronLeft" class="icon-violet"/>
                     </nuxt-link>
-                    <nuxt-link :to="nextLink" class="navbar-item" v-if="next !== undefined">
+                    <nuxt-link :to="nextLink" class="navbar-item" v-if="next !== undefined" v-tooltip.right="tooltip(next)">
                         <font-awesome-icon :icon="chevronRight" class="icon-violet"/>
                     </nuxt-link>
             </div>
@@ -37,6 +37,12 @@ export default {
     created() {
         console.log(JSON.stringify(this.previous, null, 4)); 
         console.log(JSON.stringify(this.next, null, 4)); 
+    },
+
+    methods: {
+        tooltip(post) {
+            return { content: post.title, class: 'tooltip-custom tooltip-other-custom' } 
+        } 
     },
 
     computed: {

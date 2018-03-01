@@ -22,7 +22,7 @@ module.exports = {
      ** Build configuration
      */
     build: {
-        vendor: ['moment', 'velocity-animate'],
+        vendor: ['moment', 'velocity-animate', 'vue-directive-tooltip'],
 
         /*
          ** Run ESLint on save
@@ -38,6 +38,8 @@ module.exports = {
             }
         }
     },
+
+    plugins: ['~/plugins/vue-directive-tooltip'],
 
     /*
      ** Include CSS

@@ -2,7 +2,7 @@
   "name": "fasada2",
   "version": "1.0.0",
   "description": "Nuxt.js project",
-  "author": "Patrick Zielinski <patrick.se@tutanota.com>",
+  "author": "Patrick Zielinski <lmno.patrick@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -27,7 +27,8 @@
     "graphql-tag": "^2.7.3",
     "moment": "^2.20.1",
     "nuxt": "^1.0.0",
-    "velocity-animate": "^1.5.1"
+    "velocity-animate": "^1.5.1",
+    "vue-directive-tooltip": "^1.4.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
