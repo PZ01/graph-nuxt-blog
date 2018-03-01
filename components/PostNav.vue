@@ -34,11 +34,6 @@ export default {
         FontAwesomeIcon,
     },
 
-    created() {
-        console.log(JSON.stringify(this.previous, null, 4)); 
-        console.log(JSON.stringify(this.next, null, 4)); 
-    },
-
     methods: {
         tooltip(post) {
             return { content: post.title, class: 'tooltip-custom tooltip-other-custom' } 
