@@ -42,6 +42,8 @@ $link-visited: $violet-darker;
 $link-hover: $violet-lighter;
 
 $footer-background-color: $red-wine;
+$footer-height: 144px;
 
 @import "~bulma/bulma";
-@import "custom.scss"
+@import "custom.scss";
+@import "tile-content.scss";

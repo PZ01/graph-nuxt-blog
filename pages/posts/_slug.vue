@@ -1,8 +1,6 @@
 <template>
 <div v-cloak>
-    <div class="loading-icon" v-if="loading">
-        <font-awesome-icon :icon="compass" class="icon-violet" size="10x" spin/>
-    </div>
+    <loading :loading="loading"></loading>
 
     <transition name="fade">
         <div v-if="postFetched">
@@ -21,7 +19,6 @@
                     </div>
                 </div>
             </div>
-            <subscribe></subscribe>
         </div>
     </transition>
 </div>
@@ -29,15 +26,12 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faCompass } from '@fortawesome/fontawesome-free-regular';
-
 import { GET_POST_AND_EDGES_QUERY } from '~/assets/js/graphql.js';
 
 import PostNav from '~/components/PostNav.vue';
 import PostHeader from '~/components/PostHeader.vue';
 import PostFooter from '~/components/PostFooter.vue';
-import Subscribe from '~/components/Subscribe.vue';
+import Loading from '~/components/Loading.vue';
 
 import { isEmptyObject } from '~/assets/js/utility.js';
 
@@ -47,8 +41,7 @@ export default {
         PostNav,
         PostHeader,
         PostFooter,
-        Subscribe,
-        FontAwesomeIcon,
+        Loading
     },
 
     data: () => ({
@@ -75,10 +68,6 @@ export default {
         postFetched() {
             return ! isEmptyObject(this.data); 
         },
-
-        compass() {
-            return faCompass; 
-        }
     }
 }
 </script>
@@ -90,14 +79,5 @@ export default {
 
 .fade-enter, .fade-leave-to { 
     opacity: 0;
-}
-
-.loading-icon {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    z-index: 3;
 }
 </style>

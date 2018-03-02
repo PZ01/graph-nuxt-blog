@@ -1,5 +1,5 @@
 <template>
-    <div :id="this.tileId" class="tile is-child">
+    <div :id="this.tileId" class="tile tile-as-content is-child">
         <figure>
             <img :src="post.cover.url">
         </figure>
@@ -92,33 +92,3 @@ export default {
     },
 }
 </script>
-
-<style type="sass" scoped>
-    img {
-        height: 160px; 
-        width: 100%;
-        display: block;
-        object-fit: cover;
-    }
-
-    .box {
-        padding-bottom: 0.5em !important;
-    }
-
-    .box .title a {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .box .subtitle {
-        -o-text-overflow: ellipsis;
-        text-overflow:    ellipsis;
-        overflow: hidden;
-        height: 30px;
-    }
-
-    .tags .tag {
-        margin-bottom: 0em; 
-    }
-</style>

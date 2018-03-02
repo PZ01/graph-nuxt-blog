@@ -1,0 +1,39 @@
+.tile {
+    .tile-as-content.is-child {
+        max-width: 500px;
+    }
+
+    .tile-as-content {
+        img {
+            height: 160px; 
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .box {
+            padding-bottom: 0.5em !important;
+        }
+
+        .box h1 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .box h1:hover {
+            color: $link;
+        }
+
+        .box .subtitle {
+            -o-text-overflow: ellipsis;
+            text-overflow:    ellipsis;
+            overflow: hidden;
+            height: 30px;
+        }
+
+        .tags .tag {
+            margin-bottom: 0em; 
+        }
+    }
+}
