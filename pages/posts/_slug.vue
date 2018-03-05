@@ -2,6 +2,8 @@
 <div v-cloak>
     <loading :loading="loading"></loading>
 
+    <share-modal v-if="postFetched" :is-active="showShareModal" :post="data.post" @modal-closed="onShareModalClosed"></share-modal>
+
     <transition name="fade">
         <div v-if="postFetched">
             <div class="nav-stretch"></div>    
@@ -10,7 +12,7 @@
                 <post-nav :previous="data.previous" :next="data.next"></post-nav>
 
                 <div class="box">
-                    <post-header :post="data.post"></post-header>
+                    <post-header :post="data.post" @share-clicked="onShareLinkClicked"></post-header>
 
                     <div class="content">
                         <h1 class="title">{{ data.post.title }}</h1>
@@ -28,6 +30,8 @@
 <script>
 import { GET_POST_AND_EDGES_QUERY } from '~/assets/js/graphql.js';
 
+import ShareModal from '~/components/modals/ShareModal.vue';
+
 import PostNav from '~/components/PostNav.vue';
 import PostHeader from '~/components/PostHeader.vue';
 import PostFooter from '~/components/PostFooter.vue';
@@ -41,11 +45,13 @@ export default {
         PostNav,
         PostHeader,
         PostFooter,
+        ShareModal,
         Loading
     },
 
     data: () => ({
         loading: 0,
+        showShareModal: false,
         data: {},
     }),
 
@@ -68,6 +74,16 @@ export default {
         postFetched() {
             return ! isEmptyObject(this.data); 
         },
+    },
+
+    methods: {
+        onShareLinkClicked() {
+            this.showShareModal = ! this.showShareModal;
+        },
+
+        onShareModalClosed() {
+            this.onShareLinkClicked();
+        }
     }
 }
 </script>

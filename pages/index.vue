@@ -4,7 +4,7 @@
 
         <div class="container">
             <tile-set :posts="allPosts.slice(0, 3)"></tile-set>
-            <!--tile-set :posts="allPosts.slice(3, 7)"></tile-set-->
+            <tile-set :posts="allPosts.slice(0, 3)"></tile-set>
             <!--tile-set :posts="allPosts.slice(7)"></tile-set-->
         </div>
     </section>

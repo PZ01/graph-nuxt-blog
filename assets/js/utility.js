@@ -8,8 +8,18 @@ function isEmptyObject(obj) {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
 }
 
-function createToSlug(slug, id) {
-    return { name: 'posts-slug', params: { 'slug': slug }, query: { 'id': id }};
+/*
+ * Mixins
+ */
+var RouteHelper = {
+    methods: {
+        createToSlug(slug, id) {
+            return { name: 'posts-slug', params: { 'slug': slug }, query: { 'id': id }};
+        },
+        createToTag(tag) {
+            return { name: 'tags-tag', params: { 'tag': tag.toLowerCase() }};
+        }
+    }
 }
 
-export { formatDate, isEmptyObject, createToSlug };
+export { formatDate, isEmptyObject, RouteHelper };

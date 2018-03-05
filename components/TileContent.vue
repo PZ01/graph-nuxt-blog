@@ -5,11 +5,11 @@
         </figure>
         <div class="box">
             <span class="tags">
-                <a class="tag" href="#" v-for="tag in post.tags" :key="tag" v-text="tag"></a>
+                <nuxt-link :to="createToTag(tag)" v-for="tag in post.tags" :key="tag" class="tag">{{ tag }}</nuxt-link>
             </span>
 
             <h1 class="title">
-                <nuxt-link :to="postSlug">{{ post.title }}</nuxt-link>
+                <nuxt-link :to="createToSlug(this.post.slug, this.post.id)">{{ post.title }}</nuxt-link>
             </h1>
             
             <h6 class="subtitle is-7">{{ post.summary }}</h6>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { formatDate, createToSlug } from '~/assets/js/utility.js';
+import { formatDate, RouteHelper } from '~/assets/js/utility.js';
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faClock } from '@fortawesome/fontawesome-free-regular';
@@ -39,6 +39,7 @@ import { faUserCircle } from '@fortawesome/fontawesome-free-solid';
 
 export default {
     props: ['post'],
+    mixins: [RouteHelper],
 
     components: {
         FontAwesomeIcon,
@@ -71,9 +72,10 @@ export default {
             return formatDate(this.post.createdAt); 
         }, 
 
+        /*
         postSlug() {
             return createToSlug(this.post.slug, this.post.id);
-        },
+        },*/
 
         fullName() {
             return this.post.author.firstName + ' ' + this.post.author.lastName; 
@@ -86,6 +88,7 @@ export default {
         iconUser() {
             return faUserCircle;
         },
+
         iconClock() {
             return faClock;
         },
