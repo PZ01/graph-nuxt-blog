@@ -1,5 +1,5 @@
 <template>
-    <delayed-group-transition>
+    <delayed-group-transition classes="tile is-ancestor">
         <div v-for="(post, index) in posts" v-bind:data-index="index" v-bind:key="post.id" class="tile is-parent">
             <tile-content :post="post"></tile-content> 
         </div>
@@ -15,6 +15,7 @@ export default {
 
     components: {
         TileContent,
+        DelayedGroupTransition,
     },
 }
 </script>

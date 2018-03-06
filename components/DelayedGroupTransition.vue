@@ -2,6 +2,7 @@
     <transition-group 
         name="list" 
         tag="div" 
+        :class="this.classes"
         v-bind:css="false" 
         v-on:before-enter="beforeEnter"
         v-on:enter="enter"
@@ -21,6 +22,8 @@ if (process.browser) {
 }
 
 export default {
+    props: ['classes'],
+
     methods: {
         beforeEnter(el) {
             el.style.opacity = 0;
