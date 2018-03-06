@@ -7,10 +7,13 @@
         </div>
         <div class="navbar-menu">
             <div class="navbar-end">
-                    <nuxt-link :to="previousLink" class="navbar-item" v-if="previous !== undefined" v-tooltip.left="tooltip(previous)">
+                    <nuxt-link :to="createToSlug(this.previous.slug, this.previous.id)" 
+                        class="navbar-item" v-if="this.previous !== undefined" v-tooltip.left="tooltip(previous)">
                         <font-awesome-icon :icon="chevronLeft" class="icon-violet"/>
                     </nuxt-link>
-                    <nuxt-link :to="nextLink" class="navbar-item" v-if="next !== undefined" v-tooltip.right="tooltip(next)">
+
+                    <nuxt-link :to="createToSlug(this.next.slug, this.next.id)" 
+                        class="navbar-item" v-if="this.next !== undefined" v-tooltip.right="tooltip(next)">
                         <font-awesome-icon :icon="chevronRight" class="icon-violet"/>
                     </nuxt-link>
             </div>
@@ -19,7 +22,7 @@
 </template>
 
 <script>
-import { createToSlug } from '~/assets/js/utility.js';
+import { RouteHelper  } from '~/assets/js/utility.js';
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faTimesCircle } from '@fortawesome/fontawesome-free-regular';
@@ -29,6 +32,8 @@ import { faBan } from '@fortawesome/fontawesome-free-solid';
 
 export default {
     props: ['previous', 'next'],
+
+    mixins: [RouteHelper],
 
     components: {
         FontAwesomeIcon,
@@ -51,14 +56,6 @@ export default {
 
         chevronRight() {
             return faChevronRight;
-        },
-
-        previousLink() {
-            return createToSlug(this.previous.slug, this.previous.id);
-        },
-
-        nextLink() {
-            return createToSlug(this.next.slug, this.next.id);
         },
     },
 }

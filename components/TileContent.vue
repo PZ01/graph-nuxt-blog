@@ -5,7 +5,7 @@
         </figure>
         <div class="box">
             <span class="tags">
-                <nuxt-link :to="createToTag(tag)" v-for="tag in post.tags" :key="tag" class="tag">{{ tag }}</nuxt-link>
+                <nuxt-link :to="createToTag(tag.name)" v-for="tag in post.tags" :key="tag.name" class="tag">{{ tag.name }}</nuxt-link>
             </span>
 
             <h1 class="title">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="level-item">
                         <font-awesome-icon :icon="iconClock" transform="shrink-3" class="icon-violet"/>
-                        <a href="#" v-text="formattedPostDate"></a>
+                        <a href="#" v-text="formatDate(this.post.createdAt)"></a>
                     </div>
                 </div>
             </nav>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { formatDate, RouteHelper } from '~/assets/js/utility.js';
+import { GenericHelper, RouteHelper } from '~/assets/js/utility.js';
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faClock } from '@fortawesome/fontawesome-free-regular';
@@ -39,7 +39,7 @@ import { faUserCircle } from '@fortawesome/fontawesome-free-solid';
 
 export default {
     props: ['post'],
-    mixins: [RouteHelper],
+    mixins: [GenericHelper, RouteHelper],
 
     components: {
         FontAwesomeIcon,
@@ -67,15 +67,6 @@ export default {
         tileId() {
             return 'tile_' + this.post.id;
         },
-
-        formattedPostDate() {
-            return formatDate(this.post.createdAt); 
-        }, 
-
-        /*
-        postSlug() {
-            return createToSlug(this.post.slug, this.post.id);
-        },*/
 
         fullName() {
             return this.post.author.firstName + ' ' + this.post.author.lastName; 

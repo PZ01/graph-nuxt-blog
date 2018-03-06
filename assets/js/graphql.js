@@ -8,7 +8,9 @@ query AllPostsQuery($first: Int!, $skip: Int!) {
         title
         summary
         createdAt
-        tags
+        tags {
+            name
+        }
         cover {
             url
         }
@@ -35,7 +37,9 @@ query GetPostQuery($strId: String!, $id: ID!) {
         }
         title
         createdAt
-        tags
+        tags {
+            name
+        }
         content    
 
     }
@@ -48,5 +52,23 @@ fragment PostFragment on Post {
     title
     slug
     id
+}
+`;
+
+export const GET_POST_BY_TAGS_QUERY = gql`
+query GetPostsByTag($tag: String!) {
+    allTags(filter: {name: $tag}) {
+        posts(filter: {isPublished: true}) {
+            id
+            slug
+            createdAt
+            title
+            summary
+            author {
+                firstName
+                lastName
+            }
+        }
+    }
 }
 `;

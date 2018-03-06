@@ -12,7 +12,7 @@
 
 <script>
 import TileSet from '~/components/TileSet.vue';
-import {ALL_POSTS_QUERY} from '~/assets/js/graphql.js';
+import { ALL_POSTS_QUERY } from '~/assets/js/graphql.js';
 import Loading from '~/components/Loading.vue';
 
 const POSTS_PER_PAGE = 10;

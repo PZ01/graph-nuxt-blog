@@ -2,10 +2,10 @@
 <div v-cloak>
     <loading :loading="loading"></loading>
 
-    <share-modal v-if="postFetched" :is-active="showShareModal" :post="data.post" @modal-closed="onShareModalClosed"></share-modal>
+    <share-modal v-if="! isEmptyObject(this.data)" :is-active="showShareModal" :post="data.post" @modal-closed="onShareModalClosed"></share-modal>
 
     <transition name="fade">
-        <div v-if="postFetched">
+        <div v-if="! isEmptyObject(this.data)">
             <div class="nav-stretch"></div>    
             <div class="container container-post">
 
@@ -37,9 +37,11 @@ import PostHeader from '~/components/PostHeader.vue';
 import PostFooter from '~/components/PostFooter.vue';
 import Loading from '~/components/Loading.vue';
 
-import { isEmptyObject } from '~/assets/js/utility.js';
+import { GenericHelper } from '~/assets/js/utility.js';
 
 export default {
+
+    mixins: [GenericHelper],
 
     components: {
         PostNav,
@@ -70,12 +72,6 @@ export default {
         },
     },
 
-    computed: {
-        postFetched() {
-            return ! isEmptyObject(this.data); 
-        },
-    },
-
     methods: {
         onShareLinkClicked() {
             this.showShareModal = ! this.showShareModal;
@@ -87,13 +83,3 @@ export default {
     }
 }
 </script>
-
-<style type="sass" scoped>
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-}
-
-.fade-enter, .fade-leave-to { 
-    opacity: 0;
-}
-</style>

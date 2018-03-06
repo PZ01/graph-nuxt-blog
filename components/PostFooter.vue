@@ -4,27 +4,22 @@
             <div class="level-item">
                 <span class="text-emphasis padding-right">Categorized as:</span>
                 <span class="tags">
-                    <a class="tag" href="#" v-for="tag in post.tags" :key="tag" v-text="tag"></a>
+                    <nuxt-link :to="createToTag(tag.name)" v-for="tag in post.tags" :key="tag.name" class="tag" v-text="tag.name"></nuxt-link>
                 </span>
             </div>
         </div>
         <div class="level-right">
-            <div class="level-item text-emphasis" v-text="formattedPostDate"></div> 
+            <div class="level-item text-emphasis" v-text="formatDate(this.post.createdAt)"></div> 
         </div>
     </nav>   
 </template>
 
 <script>
-import { formatDate } from '~/assets/js/utility.js';
+import { GenericHelper, RouteHelper } from '~/assets/js/utility.js';
 
 export default {
     props: ['post'],
-
-    computed: {
-        formattedPostDate() {
-            return formatDate(this.post.createdAt); 
-        } 
-    }
+    mixins: [GenericHelper, RouteHelper],
 }
 </script>
 
