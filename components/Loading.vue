@@ -1,6 +1,8 @@
 <template>
-    <div class="loading-icon" v-if="loading">
-        <font-awesome-icon :icon="compass" class="icon-violet" size="10x" spin/>
+    <div class="background" v-if="loading">
+        <div class="loading-icon">
+            <font-awesome-icon :icon="compass" class="icon-violet" size="10x" spin/>
+        </div>
     </div>
 </template>
 
@@ -25,6 +27,13 @@ export default {
 </script>
 
 <style type="sass" scoped>
+.background {
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 .loading-icon {
     position: absolute;
     left: 50%;
