@@ -22,7 +22,7 @@ module.exports = {
      ** Build configuration
      */
     build: {
-        vendor: ['moment', 'velocity-animate', 'vue-directive-tooltip'],
+        vendor: ['moment', 'vue-directive-tooltip'],
 
         /*
          ** Run ESLint on save
