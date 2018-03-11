@@ -7,7 +7,6 @@
 <script>
 export default {
     asyncData({ params }) {
-        alert('wtf');
     },
   }
 </script>
