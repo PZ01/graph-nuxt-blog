@@ -42,7 +42,11 @@ query GetPostQuery($strId: String!, $id: ID!) {
         tags {
             name
         }
+        cover {
+            url
+        }
         content    
+        summary 
 
     }
     Next: allPosts(first: 1, after: $strId) {

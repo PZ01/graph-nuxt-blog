@@ -57,6 +57,12 @@ export default {
         data: {},
     }),
 
+    head () {
+        return {
+            meta: this.ogMetaData
+        }
+    },
+
     apollo: {
         $loadingKey: 'loading',
         data: {
@@ -70,6 +76,25 @@ export default {
                 'post': Post,
             }),
         },
+    },
+
+    computed: {
+        ogMetaData() {
+            if(this.isEmptyObject(this.data))
+                return [];
+
+            return [
+                {name: 'og:title', content: this.data.post.title},
+                {name: 'og:description', content: this.data.post.summary},
+                {name: 'og:image', content: this.data.post.cover.url},
+                {name: 'og:type', content: 'article'},
+                {name: 'twitter:title', content: this.data.post.title},
+                {name: 'twitter:description', content: this.data.post.summary},
+                {name: 'twitter:image', content: this.data.post.cover.url},
+                {hid: 'description', name: 'description', content: this.data.post.summary },
+                {hid: 'keywords', name: 'keywords', content: this.data.post.tags.map(tag => tag.name).join() }
+            ];
+        }
     },
 
     methods: {

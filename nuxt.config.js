@@ -7,11 +7,12 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'fasada2',
+        title: 'Blood N Thunder',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+            { hid: 'description', name: 'description', content: 'Patrick\' Blog' },
+            { hid: 'keywords', name: 'keywords', content: 'programming, psychology, meditation, lifestyle, fitness, buddhism' }
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
