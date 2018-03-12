@@ -16,7 +16,7 @@
             </span>
         </div>
         <div class="control">
-            <button class="button is-medium is-primary" :disabled="! isValidEmail">
+            <button class="button is-medium is-primary" :class="classes" :disabled="cannotSubmit" @click="addSubscriber()">
                 Subscribe
             </button>
         </div>
@@ -28,10 +28,10 @@ import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import { faEnvelope } from '@fortawesome/fontawesome-free-solid';
 import { faCheck } from '@fortawesome/fontawesome-free-solid';
 import { faExclamation } from '@fortawesome/fontawesome-free-solid';
+import { ADD_SUBSCRIBER } from '~/assets/js/graphql.js';
 
-let validator  = require('email-validator');
+let validator = require('email-validator');
  
-validator.validate("test@email.com"); // true 
 export default {
     components: {
         FontAwesomeIcon,
@@ -40,10 +40,16 @@ export default {
     data() {
         return {
             email: '', 
+            submitted: false,
+            loading: false,
         } 
     },
 
     computed: {
+        classes() {
+            return [this.loading ? 'is-loading' : '']; 
+        },
+
         envelope() {
             return faEnvelope;
         },
@@ -60,6 +66,10 @@ export default {
             return validator.validate(this.email); 
         },
 
+        cannotSubmit() {
+            return (! this.isValidEmail || this.loading); 
+        },
+
         validation() {
             if(this.isValidEmail) {
                 return 'valid-email';
@@ -67,6 +77,23 @@ export default {
             return 'invalid-email';
         }
     },
+
+    methods: {
+        addSubscriber() {
+            this.loading = true;
+
+            this.$apollo.mutate({
+                mutation: ADD_SUBSCRIBER,
+                variables: { email: this.email },
+            }).then((data) => {
+                this.loading = false;
+                this.$emit('email-submitted-ok');
+            }).catch((error) => {
+                this.loading = false;
+                this.$emit('email-submitted-error');
+            }); 
+        } 
+    }
 }
 </script>
 

@@ -78,3 +78,11 @@ query GetPostsByTag($tag: String!) {
     }
 }
 `;
+
+export const ADD_SUBSCRIBER = gql`
+mutation($email: String!) {
+  createSubscriber(email: $email) {
+    email
+  }
+}
+`;
