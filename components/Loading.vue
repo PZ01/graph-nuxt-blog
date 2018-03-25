@@ -1,28 +1,20 @@
 <template>
     <div class="background" v-if="loading">
         <div class="loading-icon">
-            <font-awesome-icon :icon="compass" class="icon-violet" size="10x" spin/>
+            <font-awesome-icon :icon="['far', 'compass']" class="icon-violet" size="10x" spin></font-awesome-icon>
         </div>
     </div>
 </template>
 
 <script charset="utf-8">
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faCompass } from '@fortawesome/fontawesome-free-regular';
 
 export default {
-
     props: ['loading'],
 
     components: {
         FontAwesomeIcon
     },
-
-    computed: {
-        compass() {
-            return faCompass; 
-        }
-    }
 }    
 </script>
 

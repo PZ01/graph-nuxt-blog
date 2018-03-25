@@ -3,14 +3,14 @@
         <div class="level-item has-text-centered">
             <div class="field has-addons">
                 <p class="control">
-                <a class="button is-medium is-primary" @click="prevClicked" :disabled="atBeginning">
-                    <font-awesome-icon :icon="chevronLeft" class="icon-violet"/>
-                </a>
+                    <a class="button is-medium is-primary" @click="prevClicked" :disabled="atBeginning">
+                        <font-awesome-icon icon="chevron-left"></font-awesome-icon>
+                    </a>
                 </p>
                 <p class="control">
-                <a class="button is-medium is-primary" @click="nextClicked" :disabled="hasReachedEnd">
-                    <font-awesome-icon :icon="chevronRight" class="icon-violet"/>
-                </a>
+                    <a class="button is-medium is-primary" @click="nextClicked" :disabled="hasReachedEnd">
+                        <font-awesome-icon icon="chevron-right" class="icon-violet"></font-awesome-icon>
+                    </a>
                 </p>
             </div>
         </div>
@@ -19,8 +19,6 @@
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faChevronRight } from '@fortawesome/fontawesome-free-solid';
-import { faChevronLeft } from '@fortawesome/fontawesome-free-solid';
 
 export default {
     props: ['loading', 'localItemCount', 'totalItemCount', 'currentIndex'],
@@ -30,14 +28,6 @@ export default {
     },
 
     computed: {
-        chevronLeft() {
-            return faChevronLeft;
-        },
-
-        chevronRight() {
-            return faChevronRight;
-        },
-
         hasReachedEnd() {
             return (this.localItemCount == this.totalItemCount && this.currentIndex * 2 == this.localItemCount); 
         },

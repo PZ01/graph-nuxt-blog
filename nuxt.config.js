@@ -83,12 +83,16 @@ module.exports = {
         }
     },
 
-    plugins: ['~/plugins/vue-directive-tooltip'],
+    plugins: [
+        '~/plugins/vue-directive-tooltip',
+        '~/plugins/font-awesome',
+    ],
 
     /*
      ** Include CSS
      */
     css: [
+        '@fortawesome/fontawesome/styles.css',
         '~assets/css/main.scss',
     ],
 

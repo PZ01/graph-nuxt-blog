@@ -23,18 +23,18 @@
                     <div id="share">
                         <!-- facebook -->
                         <a class="facebook" :href="facebookUrl" target="blank">
-                            <font-awesome-icon :icon="facebook"/>
+                            <font-awesome-icon :icon="['fab', 'facebook']"/>
                         </a>
 
                         <!-- twitter -->
                         <a class="twitter" href="https://twitter.com/intent/tweet?status=title+url" target="blank">
-                            <font-awesome-icon :icon="twitter"/>
+                            <font-awesome-icon :icon="['fab', 'twitter']"/>
                         </a>
 
                         <!-- pinterest -->
                         <a class="pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=media&url=url&is_video=false&description=title" 
                                              target="blank">
-                            <font-awesome-icon :icon="pinterest"/>
+                            <font-awesome-icon :icon="['fab', 'pinterest']"/>
                         </a>
                     </div>
                 </article>
@@ -46,9 +46,6 @@
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faFacebook } from '@fortawesome/fontawesome-free-brands';
-import { faTwitter } from '@fortawesome/fontawesome-free-brands';
-import { faPinterest } from '@fortawesome/fontawesome-free-brands';
 
     export default {
         props: ['isActive', 'post'],
@@ -58,18 +55,6 @@ import { faPinterest } from '@fortawesome/fontawesome-free-brands';
         },
 
         computed: {
-            facebook() {
-                return faFacebook; 
-            },
-
-            twitter() {
-                return faTwitter; 
-            },
-            
-            pinterest() {
-                return faPinterest; 
-            },
-
             url() {
                 return "http://127.0.0.1" + this.$route.fullPath; 
             },

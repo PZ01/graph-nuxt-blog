@@ -8,7 +8,7 @@
                     <span class="text-emphasis">Posted By 
                         <a href="#">
                             {{post.author.firstName}} {{post.author.lastName}}
-                            <font-awesome-icon :icon="longArrowAltRight" class="icon-violet"/>
+                            <font-awesome-icon icon="long-arrow-alt-right" class="icon-violet"/>
                         </a>
                     </span> 
                 </div>
@@ -17,7 +17,7 @@
                 <div class="level-item text-emphasis">
                     <a @click="onShareLinkClicked">
                         Share
-                        <font-awesome-icon :icon="shareSquare" class="icon-violet"/>
+                        <font-awesome-icon icon="share-square" class="icon-violet"/>
                     </a> 
                 </div> 
             </div>
@@ -27,8 +27,6 @@
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faLongArrowAltRight } from '@fortawesome/fontawesome-free-solid';
-import { faShareSquare } from '@fortawesome/fontawesome-free-solid';
 
 export default {
     props: ['post'],
@@ -41,15 +39,6 @@ export default {
         return {
             shareModalActive: false,
         }  
-    },
-
-    computed: {
-        longArrowAltRight() {
-            return faLongArrowAltRight;
-        },
-        shareSquare() {
-            return faShareSquare;
-        }
     },
 
     methods: {

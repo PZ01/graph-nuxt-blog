@@ -17,11 +17,11 @@
             <nav class="level">
                 <div class="level-left">
                     <div class="level-item">
-                        <font-awesome-icon :icon="iconUser" transform="shrink-3" class="icon-violet"/>
+                        <font-awesome-icon icon="user-circle" transform="shrink-3" class="icon-violet"/>
                         <a href="#" v-text="fullName"></a>
                     </div>
                     <div class="level-item">
-                        <font-awesome-icon :icon="iconClock" transform="shrink-3" class="icon-violet"/>
+                        <font-awesome-icon :icon="['far', 'clock']" transform="shrink-3" class="icon-violet"/>
                         <a href="#" v-text="formatDate(this.post.createdAt)"></a>
                     </div>
                 </div>
@@ -34,8 +34,6 @@
 import { GenericHelper, RouteHelper } from '~/assets/js/utility.js';
 
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faClock } from '@fortawesome/fontawesome-free-regular';
-import { faUserCircle } from '@fortawesome/fontawesome-free-solid';
 
 export default {
     props: ['post'],
@@ -70,18 +68,6 @@ export default {
 
         fullName() {
             return this.post.author.firstName + ' ' + this.post.author.lastName; 
-        },
-
-        tagCircle() {
-            return faDotCircle;
-        },
-
-        iconUser() {
-            return faUserCircle;
-        },
-
-        iconClock() {
-            return faClock;
         },
     },
 }

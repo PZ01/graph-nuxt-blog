@@ -9,10 +9,10 @@
              v-model="email"
              required>
             <span class="icon is-medium is-left">
-                <font-awesome-icon :icon="envelope"/>
+                <font-awesome-icon icon="envelope"/>
             </span>
             <span class="icon is-medium is-right">
-                <font-awesome-icon :icon="isValidEmail ? check : exclamation" :class="validation"/>
+                <font-awesome-icon :icon="isValidEmail ? 'check' : 'exclamation'" :class="validation"/>
             </span>
         </div>
         <div class="control">
@@ -25,9 +25,6 @@
 
 <script>
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faEnvelope } from '@fortawesome/fontawesome-free-solid';
-import { faCheck } from '@fortawesome/fontawesome-free-solid';
-import { faExclamation } from '@fortawesome/fontawesome-free-solid';
 import { ADD_SUBSCRIBER } from '~/assets/js/graphql.js';
 
 let validator = require('email-validator');
@@ -50,18 +47,6 @@ export default {
             return [this.loading ? 'is-loading' : '']; 
         },
 
-        envelope() {
-            return faEnvelope;
-        },
-
-        check() {
-            return faCheck;
-        },
-
-        exclamation() {
-            return faExclamation;
-        },
-
         isValidEmail() {
             return validator.validate(this.email); 
         },
@@ -75,7 +60,7 @@ export default {
                 return 'valid-email';
             }
             return 'invalid-email';
-        }
+        },
     },
 
     methods: {
