@@ -14,11 +14,6 @@ body {
     min-height: 100vh;
 }
 
-.site-footer {
-    flex-shrink: 0;
-    background-color: black;
-}
-
 [v-cloak] {
     display: none;
 }
@@ -61,13 +56,6 @@ body {
     background-color: $box-background-color;
     position: absolute;
     box-shadow: $box-shadow
-}
-
-.footer-subscribe{
-    .content {
-        width: $post-width !important;
-        margin: 0.5em auto;
-    }
 }
 
 .text-emphasis {

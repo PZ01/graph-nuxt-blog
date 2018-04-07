@@ -10,6 +10,7 @@ $family-primary: $family-opensans;
 $post-width: 720px; /*Number divisable by 12 and 16*/
 
 $beet: #2E112D;
+$beet-darker: #200b1f;
 $regal-red: #540032;
 $regal-red-lighter: #66003d;
 $fire: #C9283E;
@@ -41,7 +42,7 @@ $link: $violet;
 $link-visited: $violet-darker;
 $link-hover: $violet-lighter;
 
-$footer-background-color: $red-wine;
+$footer-background-color: $beet-darker;
 $footer-height: 144px;
 
 @import "~bulma/bulma";
@@ -49,3 +50,4 @@ $footer-height: 144px;
 @import "vue-animations.scss";
 @import "tile-content.scss";
 @import "tag.scss";
+@import "footer.scss";

@@ -10,10 +10,22 @@
             <div class="container">
                 <div class="content has-text-centered">
                     <p>
-                    <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                    <strong>Blood and Thunder</strong> by 
+                    <a href="https://www.instagram.com/zielinskip/">Patrick Zielinski</a>. 
+                    The blogs source code is available on
+                    <a href="http://opensource.org/licenses/mit-license.php">github</a>. 
                     </p>
+                    <div class="attributions level has-text-centered">
+                        <div class="level-item">
+                            <a href="https://graphcms.com/"><img src="~/assets/images/graphcms_logo.png"/></a>
+                        </div>
+                        <div class="level-item">
+                            <a href="https://nuxtjs.org/"><img src="~/assets/images/nuxt_logo.png"/></a>
+                        </div>
+                        <div class="level-item">
+                            <a href="https://bulma.io/"><img src="~/assets/images/bulma_logo.png"/></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>

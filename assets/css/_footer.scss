@@ -1,0 +1,14 @@
+.site-footer {
+    flex-shrink: 0;
+
+    .attributions img {
+        max-width: 199px;
+    }
+}
+
+.footer-subscribe{
+    .content {
+        width: $post-width !important;
+        margin: 0.5em auto;
+    }
+}
